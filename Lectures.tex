@@ -1,0 +1,130 @@
+\input{preamble.tex}
+\usepackage[T1]{fontenc}
+
+%\usepackage{fouriernc}
+\usepackage{tikz-cd}
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+\pagestyle{plain}
+\usepackage{csquotes}
+\newsavebox{\myheadbox}
+\fancyhf{}
+%\begin{flushright}
+\lhead{
+Jonas Conneryd \\ \url{conneryd@kth.se}}
+%\end{flushright}
+\rhead{970731-7559  \\
+\the\year
+}
+\chead{\Large{\textbf{\scshape{Lectures } \\ \vspace{-4pt}\scshape{\normalsize MM8042 Algebraic Topology}}}}
+\cfoot{\thepage}
+\declaretheoremstyle[headfont=\bfseries\sffamily]{normalhead}
+\interfootnotelinepenalty=10000
+%\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
+\date{}
+%\author{Jonas Conneryd \\
+%conneryd@kth.se \\ 970731-7559}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathsf{GL}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\R}{\mathbb{R}}
+\newcommand{\Res}{\mathsf{Res}^{D_{2n}}_{\langle x\rangle}}
+\newcommand{\triv}{\mathbb{1}}
+\newcommand{\Char}{\mathsf{Char}}
+\newcommand{\Fix}{\mathsf{Fix}}
+\newcommand{\Span}{\mathsf{Span}}
+\newcommand{\Tr}{\mathsf{Tr}}
+\newcommand{\Aut}{\mathsf{Aut}}
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries\em}
+
+
+\begin{document}
+%\maketitle
+\thispagestyle{fancy}
+\theoremstyle{normalhead}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{normalhead}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\theoremstyle{remark}
+\newtheorem*{example}{Example}
+
+\section{Lecture 1}
+
+\subsection{Simplices}
+\begin{definition}
+The \emph{$n$-dimensional simplex} is 
+\[
+\Delta^n \coloneqq \left\{(x_0, \ldots, x_n) \in \R^{n+1}: x_i \geq 0, \sum _i x_i = 1\right\}. 
+\]
+More, flexibly, $\Delta^n$ is the \emph{convex hull} of $n+1$ points in \emph{general position}. (Not very important). (Convex hull = set of weighted averages).
+\end{definition}
+
+\begin{definition}
+An \emph{ordered simplex} is a siplex together with a choice of linear order on its set of vertices. We denote the ordered simplex on $n+1$ vertices by $[v_0, \ldots, v_n]$. 
+\end{definition}
+\begin{remark}
+A function $\alpha: \{v_0, \ldots, v_n\} \to \{u_0, \ldots, u_n\}$ induces a function $\alpha_*: [v_0, \ldots, v_n] \to [u_0, \ldots, u_n]$ by 
+\[
+\alpha_*(t_0 v_0 + \ldots t_nv_n) \mapsto t_0 \alpha_*(v_0) + \ldots + t_n \alpha_*(v_n) = \left(\sum_{t_i \in \alpha^{-1}(v_0)}t_i\right)u_0  + \ldots + \left(\sum_{t_i \in \alpha^{-1}(v_n)}t_i\right)u_n. 
+\]
+These two maps share some similarities: If $\alpha$ is the identity, so is $\alpha_*$, and $(\beta \circ \alpha)_* = \beta_* \circ \alpha_*$. These are the characteristics of a \emph{functor} from $\mathsf{Set}$ to $\mathsf{Top}$.  
+\end{remark}
+\subsection{Complexes}
+\begin{definition}
+A \emph{$\Delta$-complex} is
+\begin{enumerate}
+    \item A collection of simplices, grouped by dimension: 
+    $
+    X_0, X_1, \ldots, X_n, \ldots
+    $
+    \item For every order-preserving inclusion 
+    $
+    \alpha: [m] \xhookrightarrow{} [n], 
+    $
+    we have a map
+    $
+    \alpha^*: X_n \to X_m
+    $
+    such that if $\alpha$ is the identity, so is $\alpha^*$, and if the composition $(\beta \circ \alpha)$ exists, it is equal to $\alpha^* \circ \beta^*$. (We have a \emph{contravariant functor} from the category of ordered sets and inclusions to the category of sets.)
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+The image of an inclusion $[v_0, \ldots, v_m] \xhookrightarrow{} [u_0, \ldots, u_n]$ is called a \emph{face} of $\Delta^n$. 
+\end{definition}
+
+
+\begin{definition}
+THe \emph{geometric realization} of a $\Delta$-complex $X_\bullet$ is the quotient space of $\sqcup_{n = 0}^\infty X_n \times \Delta^n$, by the relation that for every ordered-preserving inclusion $\alpha: [n] \to [m], \alpha^*(x_n) \times \Delta^m \sim \{x_n\} \times \alpha_*(\Delta^m)$. 
+\end{definition}
+\begin{remark}
+This definition seems contrived, but in reality it is quite reasonable. The collection of simplices are the building blocks of the complex, and the maps say which simplices are faces of which other simmplices, and the equivalence relations says how they are allowed to fit together. (Simplices fit together via a common face, which can be of any dimension).
+\end{remark}
+
+\begin{definition}
+Let $\lvert X_\bullet \rvert$ denote the geometric realization of a $\Delta$-complex $X_\bullet$. Let $Z$ be a topological space. A \emph{$\Delta$-structure} on $Z$ is a homeomorphism $Z\overset{\sim}{\to} \lvert X_\bullet \rvert$. Informally, a $\Delta$-structure on $Z$ is a presentation of $Z$ as a union of ordered simplices, where we identify faces as dictated by the equivalence relation on the geometric realization, using the canonical homeomorphism (which I assume is the composition of the quotient map with the homeomorphism). 
+\end{definition}
+
+\newpage
+
+\section{Lecture 2}
+\begin{definition}
+Let $X = \{X_0, X_1, \ldots, X_n, \ldots\}$ be a $\Delta$-complex. We define the \emph{group of simplicial $n$-dimensional chains} on $X$ as 
+\[
+C^\Delta_n(X) = \Z[X_n] = \bigoplus_{t \in X_n}\Z.
+\]
+This is the free group with number of generators equal to the number of $n$-simplices.
+\end{definition}
+\begin{definition}
+The \emph{boundary homomorphism} is $\partial_n: C^\Delta_n (X) \to C^\Delta_{n-1} (X)$, or rather $\partial_n: \Z[X_n] \to \Z[X_{n-1}]; [v_0, \ldots, v_n] \mapsto \sum_{i = 0}^n [v_0, \ldots, \hat{v}_i, \ldots, v_n]$, where the hat denotes omission of that particular variable.
+\end{definition}
+\begin{remark}
+The minus signs should be considered a reversal of the linear ordering of the vertices. In a simple case, one should think of this map as tracing the boundary (i.e. the faces) of a simplex and taking account of the linear orderings of the faces. (Draw a picture of a triangle with linear ordering on the vertices and you will invariably see what I mean.)
+\end{remark}
+\end{document}

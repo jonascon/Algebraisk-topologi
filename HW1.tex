@@ -5,10 +5,22 @@
 
 \usepackage{thmtools}
 \usepackage{fancyhdr}
-\pagestyle{fancy}
 \usepackage{csquotes}
 \newsavebox{\myheadbox}
+\fancypagestyle{normalpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd
+}
+%\end{flushright}
+\rhead{\url{conneryd@kth.se}}
+\chead{MM8042 Algebraic Topology}
+\cfoot{\thepage}
+}
 \fancyhf{}
+\fancypagestyle{firstpage}
+{
 %\begin{flushright}
 \lhead{
 Jonas Conneryd \\ \url{conneryd@kth.se}}
@@ -16,8 +28,12 @@ Jonas Conneryd \\ \url{conneryd@kth.se}}
 \rhead{970731-7559  \\
 \the\year
 }
-\chead{\Large{\textbf{\textsf{Homework 1} \\ \vspace{-4pt}\textsf{\normalsize MM8042 Algebraic Topology}}}}
+\chead{\Large{\scshape{\textbf{Homework 1} \\ \vspace{-4pt}\normalsize\textbf{ MM8042 Algebraic Topology}}}}
 \cfoot{\thepage}
+}
+
+\pagestyle{normalpage}
+
 \declaretheoremstyle[headfont=\bfseries\sffamily]{normalhead}
 \interfootnotelinepenalty=10000
 %\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
@@ -29,70 +45,21 @@ Jonas Conneryd \\ \url{conneryd@kth.se}}
 \renewcommand{\C}{\mathsf{C}}
 \begin{document}
 %\maketitle
-\thispagestyle{fancy}
+\thispagestyle{firstpage}
 \theoremstyle{normalhead}
 \newtheorem{problem}{Problem}
 \newtheorem{lemma}{Lemma}
-
-\begin{problem} 
-\textbf{(O)} Let $\Set$ be the category of sets and functions between them. Construct a functor $F$ from $\Set$ to itself with the following property: there exists an injective function between sets, call it $\alpha$, for which $F$ is not injective. In other words $F$ does not not preserve all injective functions. 
-\end{problem}
-
-\begin{proof}[Solution]
-Trivial functor? Send all functions to some function?
-\end{proof}
-
-\newpage
-
-
-
-\begin{problem}
-\textbf{(O)} In class we defined a $\Delta$-complex $X_\bullet$ as a sequence of sets $X_0, X_1 \ldots, X_n, \ldots$ together with a collection of functions between them. More precisely, for every order-preserving function $\alpha: [m] \to [n]$, there is a function $\alpha^*: X_n \to X_m$, such that $(\alpha \circ \beta)^* = \beta^* \circ \alpha^*$. We then defined the geometric realization of $X_\bullet$ to be the quotient space of the disjoint union 
-\[
-\coprod_{n=0}^\infty X_n \times \Delta^n
-\]
-by the relations $(\alpha^*(x_n), \bar{u}_m) \sim (x_n, \alpha_*(\bar{u}_m))$, where $\alpha: [m] \to [n]$ is any order-preserving injective function, $x_n \in X_n$ and $\bar{u}_m \in \Delta^m$. Finally, we defined a $\Delta$-structure on a topological space $Z$ to be a homeomorphism of $Z$ with the geometric realization of some $\Delta$-complex. Is this equivalent to Hatcher's definition?
-\end{problem}
-
-\begin{proof}[Solution]
-In Hatcher, a $\Delta$-complex structure on a space $X$ is a collection of maps $\sigma_\alpha: \Delta^n \to X$, where $n$ depends on $\alpha$, such that 
-\begin{enumerate}
-    \item The restriction $\sigma_\alpha \mid \mathring{\Delta}^n = \sigma_\alpha \mid \Delta^n - \partial \Delta^n$ is injective and each point of $X$ is in the image of exactly one such restriction.
-    \item Each restriction of $\sigma_\alpha$ to a face of $\Delta^n$ is one of the maps $\sigma_\beta : \Delta^{n-1} \to X$. (Identifying the face of $\Delta ^n$ with $\Delta ^{n-1}$ by the canonical linear homeomorphism that preserves vertex ordering). 
-    \item A set $A\subset X$ is open iff $\sigma_{\alpha}^{-1}(A)$ is open in $\Delta^{n}$ for each $\sigma_\alpha$. 
-\end{enumerate}
-
-Take an element $z \in Z$, where $Z$ is a topological space with $\Delta$-structure induced by the homeomorphism $\phi: G \to Z$, where $G$ is a geometric realization of the $\Delta$-complex $X_\bullet$. The open sets $U \in G$ are the images of the quotient map $q$ which identifies $(\alpha^*(x_n), \bar{u}_m) \sim  (x_n, \alpha_*(\bar{u}_m))$, and the open sets in $Z$ with the $\Delta$-structure are precisely $\phi(U)$, since $\phi$ is a homeomorphism. We can identify the maps $\sigma_\alpha$ in Hatcher's definition with the maps 
-\end{proof}
-
-\newpage
-
-
-
-\begin{problem}
-\textbf{(O)} Let $X$ be the quotient space of the 3-simplex $[v_0, v_1, v_2, v_3]$ by the relation that identifies the edge $[v_0, v_1]$ with $[v_2, v_3]$ and the edge $[v_0, v_2]$ with $[v_1, v_3]$  using the canonical order-preserving homeomorphism. Prove that $X$ deformation retracts onto the torus. 
-\end{problem}
-
-\begin{proof}[Solution]
-\hfill
-\begin{enumerate}[font=\normalfont,label=\textbf{(\alph*)}, wide]
-\item
-\end{enumerate}
-\end{proof}
-
-\newpage
-
-
 
 \begin{problem}
 \textbf{(W)} Suppose that $X_\bullet$ is a finite $\Delta$-complex. Define the \emph{Euler characteristic} of $X_\bullet$ to be the alternating sum $\chi(X_\bullet) = \# X_0-\#X_1+\#X_2-\ldots$. Though it is not obvious from the definition, one can show that all different $\Delta$-structures on the same space will have the same Euler characteristic. Find two different $\Delta$-structures on the torus and verify that they give the same Euler characteristic.
 \end{problem}
 
 \begin{proof}[Solution]
-\hfill
-\begin{enumerate}[font=\normalfont,label=\textbf{(\alph*)}, wide]
-\item
-\end{enumerate}
+Consider the following $\Delta$-structures on the torus:
+\begin{center}
+    \includegraphics[width = 0.7\textwidth]{Picture1.png}.
+\end{center}
+In \textbf{1}, we have one 0-simplex (0), three 1-simplices ($a, b, c$) and two 2-simplices ($A, B$). The Euler characteristic is therefore $1-3+2=0$. In \textbf{2}, we have three 0-simplices (0, 1, 2), nine 1-simplices($a, b, c$ and the other, unidentified, 1-simplices), and six $2$-simplices ($A, B, C, D, E, F$). The Euler characteristic is therefore $3-9+6 = 0$. 
 \end{proof}
 
 \newpage
@@ -135,7 +102,16 @@ so $\beta$ is unique.
 \item We need to check closure, identity, inverse and associativity. An identity element for $\mathsf{Aut}(x)$ is provided by $1_x$, which is an isomorphism with inverse $1_x$. Associativity is provided by associativity of morphism composition, which holds by definition. An inverse for the isomorphism $\alpha: x \to x$ is provided by $\beta: x \to x$, where $\beta$ is as in the definition of isomorphism in the problem formulation. $\beta$ is itself an isomorphism with inverse $\alpha$, so it is in $\mathsf{Aut}(x)$. Finally, closure holds because for isomorphisms $\alpha_1, \alpha_2$ with inverses $\beta_1, \beta_2$ respectively, the composed map $\alpha_1 \circ \alpha_2$ is an isomorphism with inverse $\beta_2 \circ \beta_1$, where we have again invoked associativity of morphism composition.
 
 
-\item Suppose we have an isomorphism $\alpha: x \to y$ with inverse $\beta: y \to x$. 
+\item Suppose we have an isomorphism $\alpha: x \to y$ with inverse $\alpha: y \to x$. Define $\phi: \mathsf{Aut}(x) \to \mathsf{Aut}(y); g_x \to \alpha \circ g_x \circ \alpha^{-1}$. $\phi(g_x)$ is a morphism $\phi(g_x): y\to y$ with inverse $\alpha \circ g_x^{-1} \circ \alpha^{-1} : y \to y$, so $\phi(g_x)$ is an isomorphism. Clearly, $\phi$ is well-defined. $\phi$ is a homomorphism since 
+\[
+\begin{aligned}
+\phi(g_{x_1}\circ g_{x_2}) &= \alpha \circ g_{x_1}\circ g_{x_2} \circ \alpha^{-1} \\
+&= \alpha \circ g_{x_1} \circ \text{Id}_x \circ g_{x_2} \circ \alpha^{-1} \\
+&= \alpha \circ g_{x_1} \circ \alpha^{-1} \circ \alpha \circ g_{x_2} \circ \alpha^{-1} \\
+&= \phi(g_{x_1})\circ \phi(g_{x_2}).
+\end{aligned}
+\]
+Moreover, $\phi$ is surjective since an arbitrary morphism $g_y \in \mathsf{Aut}(y)$ can be written as $\phi(\alpha^{-1} \circ g_y \circ \alpha)$, where $\alpha^{-1} \circ g_y \circ \alpha \in \mathsf{Aut}(x)$ by arguments analogous to the above. Finally, $\phi$ is injective since an inverse $\phi^{-1}: \mathsf{Aut}(y) \to \mathsf{Aut}(x)$ is furnished by $\phi^{-1}(g_y) = \alpha^{-1} \circ g_y \circ \alpha$. Hence we have an isomorphism $\mathsf{Aut}(x) \cong \mathsf{Aut}(y)$. 
 \end{enumerate}
 \end{proof}
 
