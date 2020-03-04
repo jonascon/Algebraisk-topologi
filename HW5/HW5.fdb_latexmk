@@ -1,10 +1,10 @@
 # Fdb version 3
-["biber HW5"] 1583340218 "HW5.bcf" "HW5.bbl" "HW5" 1583341031
-  "HW5.bcf" 1583341031 101238 7aa391470735496397a335653cc6d242 "pdflatex"
+["biber HW5"] 1583340218 "HW5.bcf" "HW5.bbl" "HW5" 1583341696
+  "HW5.bcf" 1583341413 101238 7aa391470735496397a335653cc6d242 "pdflatex"
   (generated)
   "HW5.bbl"
   "HW5.blg"
-["pdflatex"] 1583341026 "HW5.tex" "HW5.pdf" "HW5" 1583341031
+["pdflatex"] 1583341409 "HW5.tex" "HW5.pdf" "HW5" 1583341696
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/jknappen/ec/ecrm1095.tfm" 993058524 3172 eb6efaa83c6c52473a1c403f376eab0f ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/jknappen/ec/ecss0600.tfm" 993058628 3184 1b2a03e8bf5517ec142d218a5f5c5d82 ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/jknappen/ec/ecss0800.tfm" 993058632 3132 210522a5f285ef2b785f82479c3624db ""
@@ -316,16 +316,16 @@
   "C:/Users/jonco/AppData/Roaming/MiKTeX/2.9/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/jonco/AppData/Roaming/MiKTeX/2.9/tex/latex/xcolor/xcolor.sty" 1463131981 57049 34128738f682d033422ca125f82e5d62 ""
   "CW.png" 1583339534 51336 002bba70f28798a39dc0d5e37233f645 ""
-  "HW5.aux" 1583341031 1468 be3d417693d8b7dc37ef5992d673e734 "pdflatex"
+  "HW5.aux" 1583341413 1468 be3d417693d8b7dc37ef5992d673e734 "pdflatex"
   "HW5.bbl" 1583340221 486 f7f239c736cf01ac6ce7bd829f9b3c7b "biber HW5"
-  "HW5.out" 1583341030 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "HW5.run.xml" 1583341031 2305 7886b37cdc1c65208ec30565f8b0e25c "pdflatex"
-  "HW5.tex" 1583341026 10875 fe7c1e22cd4e61713d27ec20134820cd ""
+  "HW5.out" 1583341412 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "HW5.run.xml" 1583341413 2305 7886b37cdc1c65208ec30565f8b0e25c "pdflatex"
+  "HW5.tex" 1583341695 10879 c06c569c07d96b0b09ee56b33550073f ""
   "preamble.tex" 1582126148 3381 5021035fd8fb8221efcd5100310608a9 ""
   (generated)
-  "HW5.run.xml"
   "HW5.bcf"
-  "HW5.pdf"
-  "HW5.out"
   "HW5.log"
+  "HW5.pdf"
   "HW5.aux"
+  "HW5.run.xml"
+  "HW5.out"
