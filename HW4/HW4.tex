@@ -1,0 +1,211 @@
+\input{preamble.tex}
+\usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
+%\usepackage{fouriernc}
+
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+
+\usepackage{csquotes}
+
+\usepackage{polynom}
+\polyset{%
+   style=C,
+   delims={\big(}{\big)},
+   div=:
+}
+
+\newsavebox{\myheadbox}
+\fancypagestyle{normalpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd
+}
+%\end{flushright}
+\rhead{\url{conneryd@kth.se}}
+\chead{MM8042 Algebraic Topology}
+\cfoot{\thepage}
+}
+\fancyhf{}
+\fancypagestyle{firstpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd \\ \url{conneryd@kth.se}}
+%\end{flushright}
+\rhead{970731-7559  \\
+\the\year
+}
+\chead{\Large{\scshape{\textbf{Homework 4} \\ \vspace{-4pt}\normalsize\textbf{ MM8042 Algebraic Topology}}}}
+\cfoot{\thepage}
+}
+
+\pagestyle{normalpage}
+
+
+\declaretheoremstyle[headfont=\bfseries\scshape]{normalhead}
+\interfootnotelinepenalty=10000
+%\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
+\date{}
+%\author{Jonas Conneryd \\
+%conneryd@kth.se \\ 970731-7559}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathsf{GL}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\R}{\mathbb{R}}
+\newcommand{\Res}{\mathsf{Res}^{D_{2n}}_{\langle x\rangle}}
+\newcommand{\triv}{\mathbb{1}}
+\newcommand{\Char}{\mathsf{Char}}
+\newcommand{\Fix}{\mathsf{Fix}}
+\newcommand{\Span}{\mathsf{Span}}
+\newcommand{\Tr}{\mathsf{Tr}}
+\newcommand{\Ker}{\mathsf{Ker}}
+\renewcommand{\Im}{\mathsf{Im}}
+\newcommand{\Cent}{\mathsf{Cent}}
+\newcommand{\Id}{\mathsf{Id}}
+
+\begin{document}
+%\maketitle
+\thispagestyle{firstpage}
+\theoremstyle{normalhead}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}
+
+
+\begin{problem}
+  Prove that for all spaces $X$ there is an isomorphism
+\[
+H_n(X \times S^d) \cong H_n(X)\oplus H_{n-d}(X)
+\]
+with the convention that if $n-d < 0$ then $H_{n-d}(X)$ is the trivial group.
+
+\noindent
+\textbf{Suggestion:} Prove the following isomorphisms:
+\[
+H_n(X \times S^d) \cong H_n(X)\oplus H_{n}(X\times S^{d},   X\times *)
+\]
+and
+\[
+H_{n}(X\times S^{d}, X\times *) \cong H_{n-1}(X\times S^{d-1},  X\times *).
+\]
+\end{problem}
+
+\begin{proof}[Solution] We begin by proving the first isomorphism outlined above. Let $i_*$ be the injection induced by the inclusion $X\times * \hookrightarrow X \times S^d$, and let $q_*$ be the map that is the identity on the cycle classes in $H_n(X\times S^d)$ that are also relative cycle classes in $H_n(X\times S^d, X\times *)$, and sends all other cycles to zero. The following sequence is then exact:
+\[
+0 \to H_n(X\times *) \overset{i_*}{\hookrightarrow{}} H_n(X\times S^d) \overset{q_*}{\to} H_n(X\times S^d, X\times *)
+\]
+Moreover, $q$ has a section via the map that sends a relative cycle class in $H_n(X\times S^d, X\times *)$ to its corresponding cycle class in $H_n(X\times S^d)$. Therefore, the above sequence splits and so we have an isomorphism of sequences
+\begin{center}
+ \begin{tikzcd}
+   0 \arrow[r] \arrow[d, "\Id"] & H_n(X\times *) \arrow[r, "i"] \arrow[d, "\Id"] & H_n(X\times S^d) \arrow[r, "q"] \arrow[d, "g"] & H_n(X\times S^{d}, X\times *) \arrow[r] \arrow[d, "\Id"] & 0\arrow[d, "\Id"] \\
+  0 \arrow[r] & H_n(X\times *) \arrow[r, "\iota"] & H_n(X\times *) \oplus H_n(X\times S^{d}, X\times *)  \arrow[r, "p"] & H_n(X\times S^{d}, X\times *) \arrow[r] & 0
+ \end{tikzcd}
+\end{center}
+which has the immediate consequence of providing an isomorphism $ g: H_n(X\times S^d) \xrightarrow{\sim} H_n(X\times *) \oplus H_n(X\times S^{d}, X\times *) $. Since $H_n(X) \cong H_n(X\times *)$ because $X\simeq X \times *$, we get an isomorphism $H_n(X\times S^d) \cong H_n(X) \oplus H_n(X\times S^{d}, X\times *)$.
+
+
+Now onto the second isomorphism above. We can decompose $S^d$ as a union of two hemispheres (homeomorphic to $D^d$) intersection $S^{d-1}$. Let the point $*$ that we have specified lie on this intersection. Recall that if one has a pair of spaces $(X, Y)=(A\cup B, C\cup D)$ where $C\subset A$ and $D \subset B$ and $X$ is the union of the interiors of $A$ and $B$ and $Y$ is the union of the interiors of $C$ and $D$, we have a relative Mayer-Vietoris sequence
+\[
+\ldots \to H_n(A\cap B, C\cap D) \to H_n(A, C) \oplus H_n(B, D) \to H_n(X, Y) \to H_{n-1}(A\cap B, C\cap D) \ldots
+\]
+Let the first hemisphere be denoted $H_1$ and let the second hemisphere be denoted $H_2$. Let their intersection be denoted $I$. In our case, $A = X\times H_1, B = X \times H_2, C = D = X\times *$. Since the hemispheres are homeomorphic to $D^d$, we have $H_n(A\cap B, C\cap D) = H_n(X\times S^{d-1}, X\times *)$ (where the point in the second relative homology group is assumed to be in $S^{d-1}$). Similarly, $H_n(A, C) = H_n(B, D) = H_n(X\times D^d, X\times *)$ (where the point lies in $D^d$). Then we get the relative Mayer-Vietoris sequence
+  \[
+  \begin{aligned}
+\ldots \to H_n(X \times S^{d-1}, X \times *) &\to H_n(X \times D^d, X \times *) \oplus H_n(X \times D^d, X \times *) \to \\
+\to H_n(X \times S^{d}, X \times *) &\to H_{n-1}(X \times S^{d-1}, X \times *) \to H_{n-1}(X \times D^d, X \times *) \oplus H_{n-1}(X \times D^d, X \times *) \to \ldots
+\end{aligned}
+  \]
+Proposition 2.19. in Hatcher states that if two maps $f, g: (X, A) \to (Y, B)$ are homotopic through maps of pairs $(X, A) \to (Y, B)$, then $f_* = g_* : H_n(X, A) \to H_n(Y, B)$. Since $X \times H_i$ is homotopy equivalent to $X\times *$ by contracting the hemisphere to a point via a map $f$, we get that the induced map is an isomorphism $H_n(X\times D^n, X\times *) \cong H_n(X\times *, X\times *) = (0)$. Therefore our sequence reduces to
+\[
+\begin{aligned}
+\ldots \to H_n(X \times S^{d-1}, X \times *) &\to 0
+\to H_n(X \times S^{d}, X \times *) &\to H_{n-1}(X \times S^{d-1}, X \times *) \to 0 \to \ldots
+\end{aligned}
+\]
+which by exactness immediately implies that
+\[
+H_n(X \times S^{d}, X \times *) \cong H_{n-1}(X \times S^{d-1}, X \times *).
+\]
+The case of $H_0(X\times S^d, X\times *)$ also follows since the Mayer-Vietoris sequence terminates at 0. We therefore have our desired isomorphisms. Now it remains to show the original isomorphism.
+
+
+
+We start with the case $d>n$. Then, consider $\sigma: (0)\to X\times S^j, \sigma \in C_0(X\times S^j)$ and suppose $\sigma(0) = (x, p)$. Define $\eta: \Delta^1 = [0, 1] \to X\times S^j$. Let $\eta(0) = (x, p), \eta(1) = (x, *)$. This map is defined for $j\geq 1$ since $S^j$ is then path-connected. Then $\eta \in C_1(X \times S^j)$. We have a commutative diagram
+\begin{center}
+\begin{tikzcd}
+  C_1(X\times S^j) \arrow[r, "\partial"] \arrow[d] & C_0(X\times S^j) \arrow[d] \\
+ C_1(X\times S^j)/C_1(X\times *) \arrow[r] & C_0(X\times S^j)/C_0(X\times *) \\
+\end{tikzcd}
+\end{center}
+Then $\partial(\eta) = \eta|_{\{0\}} - \eta|_{{1}} = \sigma - \eta|_{{1}}$. But in the quotient by $C_0(X\times *)$, $\eta|_{{1}}$ is killed and so by surjectivity of the rightmost downward facing map and commutativity of the diagram we must have that $[\eta] \mapsto [\sigma]$ in the relative case. Hence $\sigma$ is a boundary in the zeroth relative chain complex, and since sigma was arbitrary, the zeroth relative homology group $H_0(X\times S^{d-n}, X\times *)$ must then be trivial. By our second isomorphism we get in the case $n-d <0$ that $H_n(X\times S^d, X\times *)$ is trivial, so by our first homeomorphism $H_n(X\times S^d) \cong H_n(X)$.
+
+
+
+Now onto the case $n-d\geq 0$. By repeated application of the second isomorphism, we get
+\[
+H_n(X \times S^{n-d}, X \times *) \cong H_{n-1}(X \times S^{d-1}, X \times *) \cong \ldots \cong H_{n-d}(X \times S^{0}, X \times *).
+\]
+But $S^0$ is simply two points, so the relative homology $H_{n-d}(X \times S^{0}, X \times *) = H_{n-d}(X \times \{*_1, *_2\}, X \times *)$, which by WLOG excisioning out $X\times *_1$ is equal to $H_{n-d}((X \times *_2) \sqcup *, *) \cong H_{n-d}(X\times *) \cong H_{n-d}(X)$ (we can excision $X\times *$ since it is closed in $X\times \{*_1, *_2\}$).
+\end{proof}
+
+
+\newpage
+
+\begin{problem}
+
+Let $f(z) = a_nz^n + \ldots + a_1z + a_0$ be a polynomial with complex coefficients. View it as a map $f: \C\to \C$. one can associate with $f$ a map $\hat{f}: S^2 \to S^2$ as follows:
+\begin{itemize}
+  \item Let $D$ Be the closed unit disk in $\C$. The preimage $f^{-1}(D)$ of the unit disk is a bounded subset of $\C$. (why?)
+  \item Choose a disk $D_r$ such that the interior of $D_r$ contains $f^{-1}(D)$. Then $f$ restricts to a map $D_r \to \C$ that takes the boundary of $D_r$ to the exterior of $D$.
+  \item It follows that $f$ induces a map between quotient spaces $D_r/\partial D_r \to \C / (\C \setminus \dot{D})$. Since both of these spaces are canonically homeomorphic to $S^2,f$ induces a map $\hat{f}: S^2 \to S^2$.
+\end{itemize}
+  Prove that the degree of $\hat{f}$ as a map is the same as the degree of $f$ as a polynomial. Furthermore, prove that for every root of $f$, the local degree of $\hat{f}$ at the root is the multiplicity of the root.
+
+  \noindent \textbf{Note:} The problem is based on Hatcher's problem 8 on page 155. I was not sure that everyone knew about one-point compactification, so I used a workaround. If you know what a one-point compactification is, you can also answer Hatcher's version of the problem. Reading carefully the proof of Proposition 2.30 and example 2.32 should help you with this problem.
+
+\end{problem}
+
+\begin{proof}[Solution]
+  \hfill
+
+\textbf{Note:} \textit{Most people coming from the Engineering Physics programme at KTH into this master programme have not read complex analysis since it ceased to be a prerequisite for the programme the year we started. This problem seems to lend itself naturally to the methods of complex analysis; I don't know these methods, which is why they are absent in this solution.}
+
+\textbf{Note after finishing up writing this:} \textit{I feel like this solution is a bit iffy, and probably quite unpleasant to read. It was not my intent for that to happen, and if the reader finishes reading this, they have my kudos and respect.}
+
+ We want to prove that for every root of $f$, the local degree of $\hat{f}$ at the root is the multiplicity of the root. It will follow from this that the degree of $f$ as a polynomial is the same as the degree of $\hat{f}$ if we use the fundamental theorem of algebra, i.e. that any polynomial in $\C$ of degree $n$ has $n$ (not necessaily distinct) roots in $\C$, along with the formula $\deg(\hat{f}) = \sum_i \deg\hat{f}|x_i$ where $x_i$ are the roots of $f$.
+
+Let the one-point compactification of $\C$ be denoted $\C^*$. Then $\C^*$ is homeomorphic to $S^2$ by stereographic projection, mapping the projection point to infinity. We extend $f$ to $\C^*$ in the obvious way, mapping $\infty \in \C^*$ onto itself. Moving on, our discussion will mostly be on the level of $\C^*$ and not $S^2$. Viewed as a map $\C^* \to \C^*$, the polynomial $f$ will have $f^{-1}(0) = \{z_1, \ldots, z_k\}$ i.e. the roots of the polynomial, having multiplicities $\{m_1, \ldots, m_k\}$. Let $z_i$ be a root of $f$ with multiplicity $m_i$. Since we are dealing with a polynomial in $\C$ and $(z-z_i)^{m_i}$ factors into $f$, we can Taylor expand $f$ in a neighborhood $U_i$ around $z_i$ as $f(z) = (z-z_i)^{m_i}(a_i + (z-z_i)p(z))$, where $\lvert p(z)\rvert$ is bounded in $U_i$ by some $A$. Take $\epsilon < \lvert a_i\rvert /(1000000A)$ as the radius of our neighborhood around $z_i$. Then $f(z)$ will certainly be nonzero in $U_i\setminus z_i$. Now, consider the homotopy $H(z, t) = (z-z_i)^{m_i}(a_i + (z-z_i)p(z)(1-t))$. Then $H(z, 0) = f(z)$ and $H(z, 1) = a_i(z-z_i)^m_i$. By our choice of $\epsilon$, this homotopy will not hit 0 for any value of $t$ or $z$, so it is a homotopy of polynomials whose codomain is $V\setminus 0$ for a neighborhood $V$, chosen suitably large for the homotopy not to change it.
+
+Now, we shift our attention to the polynomial $y(z) = a_i(z-z_i)^{m_i}$. To do this, we have to see how $y_i(z): U_i\setminus z_i \to V\setminus 0$ fits into the degree of $\hat{f}$. Let $s$ be the inverse stereographic projection that takes $\C^*$ to $S^2$. We have a diagram
+\begin{center}
+  \begin{tikzcd}
+  & {H_2(U_i, U_i \setminus z_i)} \arrow[r, "\hat{f}_*"] \arrow[d] \arrow[ld] & {H_2(V, V\setminus 0)} \arrow[d, "\sim"] \\
+  {H_2(S^2, S^2\setminus \hat{z}_i)} & {H_2(S^2, S^2\setminus \hat{f}^{-1}(\hat{0}))} \arrow[l] \arrow[r, "\hat{f}_*"]  & {H_2(S^2, S^2\setminus \hat{0})} \\
+ & H_2(S^2) \arrow[r, "\hat{f}_*"] \arrow[r] \arrow[u] \arrow[lu] & {H_2(S^2)} \arrow[u, "\sim"]
+  \end{tikzcd}
+\end{center}
+where the top row is abuse of notation since it really should be the images of the sets in $S^2$, but because those and the relative pairs are homeomorphic to those in the diagram via the inverse projection, it does not matter. We have a diagram
+\begin{center}
+  \begin{tikzcd}
+  \ldots \arrow[r] & H_2(U_i) \arrow[r] \arrow[d, "\hat{f}"] & H_2(U_i, U_i \setminus z_i) \arrow[r] \arrow[d, "\hat{f}"] & H_1(U_i \setminus z_i) \arrow[r] \arrow[d, "\hat{f}"] & H_1(U_i) \arrow[r] \arrow[d, "\hat{f}"] & \ldots \\
+  \ldots \arrow[r] & H_2(U_i) \arrow[r] & H_2(V, V \setminus 0) \arrow[r]  & H_1(V \setminus 0) \arrow[r]& H_1(V) \arrow[r] & \ldots \\
+  \end{tikzcd}
+\end{center}
+But $U_i$ and $V$ are both contractible, so we $H_2(U_i) =H_1(U_i) = H_2(V) =H_1(V) = 0$. Therefore we get isomorphisms $H_2(U_i, U_i\setminus z_i) \cong H_1(U_i)$ and $H_2(V, V\setminus 0) \cong H_1(V\setminus 0)$. Now, we can instead look at the induced map from $H_1(U_i \setminus z_i)$ to $H_2(v\setminus 0)$.
+The first homology group of $U_i\setminus z_i$ will be that of a circle. The cycle $\gamma(\theta): [0, 1] \to U_i\setminus z_i: \theta \mapsto z_0 + \epsilon e^{2\pi i \theta}$ for a suitably small $\epsilon$ generates $H_1(U_i \setminus z_i)$. Our polynomial takes $\gamma$ to $\gamma'(\theta) : [0, 1] \to V\setminus\{0\}, \theta \mapsto a_i\epsilon^{m_i} e^{2\pi m_i i \theta}$ which is $m_i$ times a generator of $H_1(V\setminus 0)$ (which is also $\Z$). Therefore the induced map on homology, which is the same as $\hat{f}_*$ since $f$ and $y$ are homotopic and $f$ and $\hat{f}$ differ by homeomorphisms (maybe up to a sign), must take 1 to $m_i$.
+
+This proves that the local degree of $\hat{f}$ around a root $z_i$ is the multiplicity of the root of $f$. It follows immediately by the fundamental theorem of algebra and proposition 2.30 in Hatcher that the degree of $\hat{f}$ is the same as the degree of $f$ as a polynomial.
+
+
+
+\begin{comment}
+We can write $f(z) = g(z)(z-z_i)^{m_i}$ for some polynomial $g(z)$, and in a small neighborhood around $z_i$ we can make $g(z)$ nonzero and bound the absolute value of $f$ by $\lvert f \rvert = \lvert g(z)(z-z_i)^{m_i} \rvert < A \lvert (z-z_i)^{m_i}\rvert $ for some real number $A$. Then the homotopy defined by $H(x, t) = [(1-t)f + t(z-z_i)^{m_i}]A/K$ for some large enough $K$ makes $f$ homotopic to $A/K(z-z_i)^{m_i}$ in this neighborhood, and so the local degree of $f$ when extended to a map $S^2 \to S^2$ will be equal to that of $A/K(z-z_i)^{m_i}$. This map has degree $m_i$; The loop $\gamma(\theta): [0, 1] \to $U_i\setminus z_i: \theta \mapsto z_0 + \epsilon e^{2\pi i \theta}$ for a suitably small $\epsilon$ generates the fundamental group of $U_i \setminus z_i$, which is clearly that of a circle. Our polynomial takes $\gamma$ to $\gamma'(\theta) : [0, 1] \to V\setminus\{0\} e^{2\pi m_i i \theta}$ which is $m_i$ times a generator of the fundamental group of $V\setminus\{0\}$.
+\end{comment}
+
+\end{proof}
+
+
+
+\end{document}

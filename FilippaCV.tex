@@ -1,0 +1,103 @@
+\input{preambleCV.tex}
+\usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
+%\usepackage{fouriernc}
+
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\usepackage{csquotes}
+\usepackage{lipsum}
+\usepackage{tcolorbox}
+\tcbset{colframe=white}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\setlength{\columnseprule}{0.2pt}
+
+\newsavebox{\myheadbox}
+\fancyhf{}
+\fancypagestyle{firstpage}
+{
+
+\lhead{
+\Large{\scshape{\textbf{Filippa Eile}}}
+}
+
+\rhead{
+\Large{\scshape{\textbf{2020}}}
+}
+\chead{\LARGE{\scshape{\textbf{CV}}}}
+}
+
+
+
+\declaretheoremstyle[headfont=\bfseries\scshape]{normalhead}
+\interfootnotelinepenalty=10000
+%\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
+\date{}
+%\author{Jonas Conneryd \\
+%conneryd@kth.se \\ 970731-7559}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathsf{GL}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\R}{\mathbb{R}}
+\newcommand{\Res}{\mathsf{Res}^{D_{2n}}_{\langle x\rangle}}
+\newcommand{\triv}{\mathbb{1}}
+\newcommand{\Char}{\mathsf{Char}}
+\newcommand{\Fix}{\mathsf{Fix}}
+\newcommand{\Span}{\mathsf{Span}}
+\newcommand{\Tr}{\mathsf{Tr}}
+\newcommand{\Ker}{\mathsf{Ker}}
+\renewcommand{\Im}{\mathsf{Im}}
+\newcommand{\Cent}{\mathsf{Cent}}
+\newcommand{\Id}{\mathsf{Id}}
+
+\begin{document}
+%\maketitle
+\thispagestyle{firstpage}
+\pagenumbering{gobble}
+\theoremstyle{normalhead}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}
+\begin{multicols}{2}
+  \begin{tcolorbox}[colback = babyblueeyes!25, boxsep=1pt,left=0pt,right=0pt,top=0pt,bottom=1pt]
+\section*{Om mig}
+\lipsum[2-2]
+\end{tcolorbox}
+\section*{Långtidsanställning}
+\subsection*{S:t Eriks Bridgecafé - 2016/2017 \\
+\normalfont\textit{Personalchef}}
+\lipsum[2-2]
+\section*{Sommaranställningar}
+\subsection*{Ebbes - 2019\\
+\normalfont\textit{Butiksbiträde}}
+\lipsum[2-2]
+\subsection*{ICA Bungehallen - 2018\\
+\normalfont\textit{Kassapersonal}}
+\lipsum[2-2]
+\subsection*{Fältgatan 79 - 2017\\
+\normalfont\textit{Vårdbiträde}}
+\lipsum[2-2]
+\subsection*{Skafferiet - 2016\\
+\normalfont\textit{Cafébiträde}}
+\lipsum[2-2]
+\section*{Övriga anställningar}
+\begin{itemize}[leftmargin=1cm]
+  \setlength\itemsep{0.5em}
+  \item kuk
+  \item kuk
+  \item kuk
+  \item kuk
+  \item kuk
+\end{itemize}
+\begin{tcolorbox}[colback = babyblueeyes!25, boxsep=1pt,left=0pt,right=0pt,top=0pt,bottom=1pt]
+\section*{Referenser}
+Ges på förfrågan.
+\end{tcolorbox}
+
+
+
+\end{multicols}
+\end{document}

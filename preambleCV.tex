@@ -1,6 +1,6 @@
 \documentclass[11pt]{amsart}
-\usepackage[marginratio=1:1, headheight=27pt,
-footskip = 13pt, a4paper, total={6.5in, 9in}]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage[marginratio=1:1, headheight = 22pt,
+footskip = 13pt, a4paper, total={7in, 9.3in}]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
 \geometry{letterpaper}                   % ... or a4paper or a5paper or ...
 %\geometry{landscape}                % Activate for for rotated page geometry
 %\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
@@ -38,7 +38,7 @@ urlcolor = blue
 \usepackage[section]{placeins}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-%\usepackage[swedish]{babel}
+\usepackage[swedish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -59,17 +59,19 @@ urlcolor = blue
 \definecolor{mylilas}{RGB}{170,55,241}
 
 %\usepackage{times}
-%\usepackage{kpfonts}
+\usepackage{kpfonts}
 %\usepackage{txfonts}
 %\usepackage{newtx}
 %\usepackage{stix}
 %\usepackage[osf,proportional]{libertine}
 %\usepackage{lmodern}
-\usepackage[charter]{mathdesign}
+%\usepackage[charter]{mathdesign}
 
 \usepackage{microtype}
 %\usepackage{stix}
 \usepackage[compact,small]{titlesec}
+\titlespacing{\section}{0pt}{0pt}{0pt}
+\titlespacing{\subsection}{0pt}{0pt}{0pt}
 \titleformat*{\section}{\Large\bfseries\scshape}
 
 \titleformat*{\subsection}{\large\bfseries\scshape}
@@ -80,9 +82,12 @@ urlcolor = blue
 \usepackage{marginnote}
 \renewcommand*{\marginfont}{\color{red}\sffamily\footnotesize}
 \usepackage{hyperref, xcolor}
+\usepackage{multicol}
+
 
 %\usepackage{makeidx}
 \definecolor{winered}{rgb}{0.5,0,0}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
 \hypersetup{
      pdfauthor={JAG},
      pdfsubject={Hyperlinks in LaTeX},
@@ -92,19 +97,9 @@ urlcolor = blue
      pdfborder={0 0 0},
 %You can set individual colors for links as below:
 colorlinks=true,
-  linkcolor=winered,
-urlcolor={winered},
+  linkcolor=blue(pigment),
+urlcolor={blue(pigment)},
 filecolor={winered},
 citecolor={winered},
-allcolors={winered}
+allcolors={blue(pigment)}
 }
-
-\usepackage[english]{babel}
-\usepackage[
-backend=biber,
-style=numeric,
-hyperref=true,
-%natbib
-]{biblatex}
-\DeclareLanguageMapping{swedish}{swedish-apa}
-\addbibresource{Komplexitetsteori.bib}

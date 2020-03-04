@@ -1,0 +1,117 @@
+\input{preamble.tex}
+\usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
+%\usepackage{fouriernc}
+
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+
+\usepackage{csquotes}
+
+\usepackage{polynom}
+\polyset{%
+   style=C,
+   delims={\big(}{\big)},
+   div=:
+}
+
+\newsavebox{\myheadbox}
+\fancypagestyle{normalpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd
+}
+%\end{flushright}
+\rhead{\url{conneryd@kth.se}}
+\chead{MM8042 Algebraic Topology}
+\cfoot{\thepage}
+}
+\fancyhf{}
+\fancypagestyle{firstpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd \\ \url{conneryd@kth.se}}
+%\end{flushright}
+\rhead{970731-7559  \\
+\the\year
+}
+\chead{\Large{\scshape{\textbf{Homework 5} \\ \vspace{-4pt}\normalsize\textbf{ MM8042 Algebraic Topology}}}}
+\cfoot{\thepage}
+}
+
+\pagestyle{normalpage}
+
+
+\declaretheoremstyle[headfont=\bfseries\scshape]{normalhead}
+\interfootnotelinepenalty=10000
+%\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
+\date{}
+%\author{Jonas Conneryd \\
+%conneryd@kth.se \\ 970731-7559}
+
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\GL}{\mathsf{GL}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\R}{\mathbb{R}}
+\newcommand{\Res}{\mathsf{Res}^{D_{2n}}_{\langle x\rangle}}
+\newcommand{\triv}{\mathbb{1}}
+\newcommand{\Char}{\mathsf{Char}}
+\newcommand{\Fix}{\mathsf{Fix}}
+\newcommand{\Span}{\mathsf{Span}}
+\newcommand{\Tr}{\mathsf{Tr}}
+\newcommand{\Ker}{\mathsf{Ker}}
+\renewcommand{\Im}{\mathsf{Im}}
+\newcommand{\Cent}{\mathsf{Cent}}
+\newcommand{\Id}{\mathsf{Id}}
+
+\begin{document}
+%\maketitle
+\thispagestyle{firstpage}
+\theoremstyle{normalhead}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}
+
+
+\begin{problem}
+  For points $y_0, \ldots, y_k$ in a convex set $Z$, let $\overline{y_0 \ldots y_k} = \frac{y_0 + \ldots + y_k}{k+1}$ denote their barycenter.
+\begin{enumerate}[font=\scshape,label=\textbf{(\Alph*)}]
+  \item Let
+  \[
+\Delta^n = [y_0, \ldots, y_n] = \{t_0 y_0 + \ldots + t_n y_n | t_i \geq 0, \sum_i t_i = 1\}
+  \]
+  be the $n$-dimensional simplex with our usual notation. Let $(i_0, \ldots, i_n)$ be a permutation of $(0, \ldots, n)$. Prove that
+  \[
+[\overline{y_{i_0}}, \overline{y_{i_0}y_{i_1}}, \ldots , \overline{y_{i_0}\ldots y_{i_n}}] =\{t_0 y_0 + \ldots + t_n y_n | t_{i_0} \geq t_{i_1} \geq \ldots t_{i_n} \}.
+  \]
+
+  \item Prove that the simplices $[\overline{y_{i_0}}, \overline{y_{i_0}y_{i_1}}, \ldots , \overline{y_{i_0}\ldots y_{i_n}}]$, ranging over all permutations $(i_0, \ldots, i_n)$ of $(0, \ldots, n)$, triangulate $\Delta^n$ (that is, their union is $\Delta^n$ and the intersection of any two is a face of both).
+\end{enumerate}
+
+\end{problem}
+\begin{proof}[Solution]
+  \hfill
+
+\begin{enumerate}[font=\scshape,label=\textbf{(\Alph*)}, wide]
+  \item By definition, we have
+  \[
+
+  \]
+\end{enumerate}
+\end{proof}
+
+\newpage
+
+\begin{problem}
+
+  Let $X$ be the space obtained from the closed unit disk $D^2$ by first deleting the interiors of two disjoint subdisks in the interior of $D^2$ and then identifying the three resulting boundary circles togwther via homeomorphisms preserving clockwise orientations of these circles.
+
+  Describe a $CW$ sctuctire on $X$, and use it to calculate the cellular (and therefore also the singluar) homology of $X$.
+\end{problem}
+\begin{proof}[Solution]
+
+\end{proof}
+
+
+\end{document}

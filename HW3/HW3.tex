@@ -1,0 +1,121 @@
+\input{preamble.tex}
+\usepackage[T1]{fontenc}
+\usepackage{tikz-cd}
+%\usepackage{fouriernc}
+
+\usepackage{thmtools}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{csquotes}
+\newsavebox{\myheadbox}
+\fancypagestyle{normalpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd
+}
+%\end{flushright}
+\rhead{\url{conneryd@kth.se}}
+\chead{MM8042 Algebraic Topology}
+\cfoot{\thepage}
+}
+\fancyhf{}
+\fancypagestyle{firstpage}
+{
+%\begin{flushright}
+\lhead{
+Jonas Conneryd \\ \url{conneryd@kth.se}}
+%\end{flushright}
+\rhead{970731-7559  \\
+\the\year
+}
+\chead{\Large{\scshape{\textbf{Homework 3} \\ \vspace{-4pt}\normalsize\textbf{ MM8042 Algebraic Topology}}}}
+\cfoot{\thepage}
+}
+
+\pagestyle{normalpage}
+
+\declaretheoremstyle[headfont=\bfseries\scshape]{normalhead}
+\interfootnotelinepenalty=10000
+%\title{\vspace{-2cm}\textbf{\textsf{ Homework 3}}}
+\date{}
+%\author{Jonas Conneryd \\
+%conneryd@kth.se \\ 970731-7559}
+
+\newcommand{\Set}{\mathsf{Set}}
+\renewcommand{\C}{\mathsf{C}}
+\newcommand{\Id}{\mathsf{Id}}
+\renewcommand{\Im}{\mathsf{Im}}
+\newcommand{\Ker}{\mathsf{Ker}}
+\begin{document}
+%\maketitle
+\thispagestyle{firstpage}
+\theoremstyle{normalhead}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+
+\begin{problem}
+Suppose we have homomorphisms of abelian groups $A \overset{i}{\to} B \overset{q}{\to} C$. Prove that the following are equivalent:
+\begin{enumerate}[font=\scshape,label=\textbf{(\Alph*)}, wide]
+  \item The sequence $0 \to A \overset{i}{\to} B \overset{q}{\to} C$ is exact and the homomorphism $q$ has a section (i.e. there is a homomorphism $s: C \to B$ such that $q \circ s$ is the identity map on $C$).
+  \item The sequence $A \overset{i}{\to} B \overset{q}{\to} C \to 0$ is exact, and the homomorphism $i$ has a retraction (i.e. there is a homomorphism $r : B \to A$ such that $r \circ i$ is the identity on $A$).
+  \item The sequence $0 \to A \overset{i}{\to} B \overset{q}{\to} C \to 0$ is exact, and moreover it is isomorphic to the sequence $0 \overset{\iota}{\to} A \to A \oplus C \overset{p}{\to} C \to 0$, where the homomorphisms in the latter sequence are the canonical inclusion of the direct summand $A$ and the canonical proection onto the direct summand $C$.
+\end{enumerate}
+\begin{remark}
+   A sequence satisfying these conditions is called a \emph{split} exact sequence.
+\end{remark}
+A question for you to ponder in your free time: Which of these implications hold if the groups are \emph{not} assumed to be abelian?
+\end{problem}
+\begin{proof}[Solution]
+  We begin by proving that \textbf{(C)} implies \textbf{(A)} and \textbf{(B)}. Assume \textbf{(C)}. Then we have short exact sequences $0 \to A \overset{i}{\to} B \overset{q}{\to} C \to 0$ and $0 \to A \overset{\iota}{\to} A \oplus C \overset{p}{\to} C \to 0$ where we have an isomorphism $f: B \to A \oplus C$ such that $f \circ i  = \iota$ and $ q \circ f^{-1}= p$.
+
+   Certainly the sequences $0 \to A \overset{i}{\to} B \overset{q}{\to} C$ and $A \overset{i}{\to} B \overset{q}{\to} C \to 0$ are exact if the above sequences are exact. Let $s'$ be the inclusion of $C$ into $A\oplus C$. Then $ p \circ s'= \Id_C$, since $p$ was defined to be the projection of $A\oplus C$ onto $C$. But $p = q \circ f^{-1}$ so $\Id_C = p \circ s' = q \circ f^{-1} \circ s'$, so we have a homomorphism $s \coloneqq f^{-1} \circ s'$ such that $q\circ s = \Id_C$. Similarly, let $r'$ be the projection of $A \oplus C$ onto $A$. Then $r' \circ \iota = \Id_A$. But $\iota = f \circ i$ so with $r = r' \circ f$ we have a homomorphism $r : B \to A$ such that $r \circ i = \Id_A$.
+
+   Next, we show that \textbf{(A)} implies \textbf{(C)}, and \textbf{(B)} implies \textbf{(C)}. Assume \textbf{(A)}. We show $q$ is surjective, which will imply exactness of $0 \to A \overset{i}{\to} B \overset{q}{\to} C \to 0$. Let $c \in C$. Then $c = \Id_C(c) = q(s(c))$, so $c \in \Im(q)$. Hence $q$ is surjective which gives the desired exact sequence. Now, instead assume \textbf{(B)}. We show $i$ is injective which implies exactness of $0 \to A \overset{i}{\to} B \overset{q}{\to} C \to 0$. Let $a_1, a_2 \in A$ and suppose $i(a_1) = i(a_2)$. Then $r(i(a_1)) = r(i(a_2)) = \Id_C(a_1) = \Id_C(a_2)$, so $a_1 = a_2$. Hence $i$ is injective as desired.
+
+   We will invoke the famous five-lemma to complete the proofs. Assume \textbf{(A)}. Then there is a homomorphism $s: C \to B$ such that $q \circ s = \Id_C$. The map $f: A \oplus C \to B; (a, c) \mapsto i(a) +  s(c)$ is then clearly well-defined, and a homomorphism since both $i$ and $s$ are homomorphisms: $f(a+a', c+c') = i(a+a') +  s(c+c') = i(a) +i(a') + s(c) + s(c') = f(a, c) + f(a', c')$. Consider the following diagram:
+      \begin{center}
+      \begin{tikzcd}
+        0 \arrow[r] \arrow[d, "\Id_0"] & A \arrow[r, "\iota"] \arrow[d, "\Id_A"] & A \oplus C \arrow[r, "p"] \arrow[d, "f"] & C \arrow[r] \arrow[d, "\Id_C"] & 0\arrow[d, "\Id_0"] \\
+       0 \arrow[r] & A \arrow[r, "i"] & B \arrow[r, "q"] & C \arrow[r] & 0
+      \end{tikzcd}
+    \end{center}
+ Certainly the leftmost and rightmost squares commute; since $\Id_0, \Id_A, \Id_C$ are isomorphisms, it remains to show that the middle left and middle right squares commute for the five-lemma to guarantee that $f$ is an isomorphism. We have that $f(\iota(a)) = f(a, 0) = i(a) = i(\Id_A(a))$ and $q(f(a, c)) = q(i(a) + s(c)) = q(i(a)) + \Id_C(c) = c$, since $i(a) \in \Ker(q)$ by exactness. Hence the diagram commutes, so $f$ is an isomorphism by the five-lemma. This also implies that $f^{-1}$ is defined and is an isomorphism. Going the path $A \overset{i}{\to} B \overset{f^{-1}}{\to} A\oplus C$ in the diagram, we see that $f^{-1} \circ i = \iota$, and going the path $A\oplus C \overset{f}{\to} B \overset{q}{\to} C$, we get that $q \circ f = p$. Therefore we also have an isomorphism of sequences.
+
+ Now, assume \textbf{(B)}. Then there is a homomorphism $r: B \to A$ such that $r\circ i$ is the identity of $A$. Then $g: B \to A\oplus C; b \mapsto (r(b), q(b))$ is well-defined, and a homomorphism since both $r$ and $q$ are well-defined homomorphisms: $g(b+b') = (r(b+b'), q(b+b')) = (r(b), q(b)) + (r(b'), q((b'))= g(b) + g(b')$. Consider the following diagram:
+  \begin{center}
+   \begin{tikzcd}
+     0 \arrow[r] \arrow[d, "\Id_0"] & A \arrow[r, "i"] \arrow[d, "\Id_A"] & B \arrow[r, "q"] \arrow[d, "g"] & C \arrow[r] \arrow[d, "\Id_C"] & 0\arrow[d, "\Id_0"] \\
+    0 \arrow[r] & A \arrow[r, "\iota"] & A\oplus C \arrow[r, "p"] & C \arrow[r] & 0
+   \end{tikzcd}
+ \end{center}
+As above, we have to show that it commutes for the five-lemma to imply that $g$ is an isomorphism, and as above we need only check the two middle squares. We have that $g(i(a)) = (r(i(a)), q(i(a))) = (a, 0) = \iota(a) = \iota(\Id_A(a))$ where we have used exactness at $B$. Moreover $p(g(b)) = p(r(b), q(b)) = q(b) = \Id_C(q(b))$. Hence the diagram commutes, and by the five-lemma $g$ is an isomorphism. Going the path $A \overset{i}{\to} B \overset{g}{\to} A\oplus C$ we see that $g \circ i = \iota$ and going the path $A\oplus C \overset{g^{-1}}{\to} B \overset{q}{\to} C$ we see that $q \circ g^{-1} = p$ and so we have an isomorphism of sequences in this case as well. This proves that \textbf{(A)} $\implies$ \textbf{(C)} and \textbf{(B)} $\implies$ \textbf{(C)}, which concludes the proof.
+\end{proof}
+
+
+\newpage
+
+
+\begin{problem}
+Prove the following variation on the theme of excision. Suppose $X = X_1 \cup X_2$, $X_0 = X_1 \cap X_2$, where $X_1, X_2$ are \textit{closed} subsets of $X$. Suppose that for $i = 1, 2$ there exists an open subset \textcolor{red}{in the subspace topology} $U_i \subset X_i$ containing $X_0$, $U_i$ \textcolor{red}{strong deformation retract} onto $X_0$. Prove that the homology groups of $X_0, X_1, X_2$ and $X$ fit in a Mayer-Vietoris sequence. You may assume the homotopy invariance of singular homology, and the Mayer-Vietoris sequence for decompositions into unions of open sets.
+\end{problem}
+
+\begin{proof}[Solution]
+Since $X_1, X_2$ are closed, their complements are open. We have that $X_1^C = X \setminus X_1 = X_2\setminus X_0$ and $X_2^C = X \setminus X_2 = X_1\setminus X_0$. Since $U_i$ is open in the subspace topology on $X_i$, there is an open set $U_i^* \subseteq X$ such that $U_i^* \cap X_i = U_i$. Let $V_1 \coloneqq X_1^C \cup U_1^*$ and $V_2 \coloneqq  X_2^C \cup U_2^*$. Then $V_1$ and $V_2$ are open in $X$ since they are unions of open sets. Moreover $V_1 = X_1^C \cup U_1^* = (X_2 \setminus X_0) \cup U_1^* = X_2 \cup U_1$ and $V_2 = X_2^C \cup U_2^* = (X_1 \setminus X_0) \cup U_2^* = X_1 \cup U_2$, because $U_1^* \setminus U_1 \subseteq X_2$ and $U_2^* \setminus U_2 \subseteq X_1$. Now $X = V_1 \cup V_2$ and $V_0 \coloneqq V_1 \cap V_2 = U_1 \cup U_2$, and $V_1, V_2, V_0$ fit into a Meyer-Vietoris sequence since $V_1, V_2$ are open. More explicitly, we have the exact sequence
+\[
+\ldots \to H_n(V_1 \cap V_2) \overset{\phi}{\to} H_n(V_1) \oplus H_n(V_2) \overset{\psi}{\to} H_n(X) \overset{\partial}{\to} H_{n-1}(V_1 \cap V_2) \to \ldots
+\]
+Our next step is to associate the homology groups present in this sequence with those of $X_1, X_2$, and $X_0$. Since $U_1, U_2$ strong deformation retract onto $X_0$ via homotopies $H_1, H_2$, the unique map obtained from the gluing lemma applied to $H_1, H_2$ (which we can apply since $H_1 = H_2 = \Id$ on $U_1 \cap U_2 = X_0$ and $U_1, U_2$ is a finite closed cover of $U_1 \cup U_2$) will make $U_1\cup U_2$ strong deformation retract onto $X_0$ as well. By homotopy invariance of singular homology, we must then have that $H_n(V_0 = U_1 \cup U_2) \cong H_n(X_0)$. We have that $V_1 = X_1 \cup U_2$ and $U_2$ strong deformation retracts onto $X_0 \subseteq X_1$ and $X_1 \cap U_2 = X_0$. Since the strong deformation retraction $H$ of $U_2$ onto $X_0$ is the identity on $U_2 \cap X_1 = X_0$, the map obtained from the gluing lemma on $H$ together with the identity map on $X_1$ (which can be used since $U_2, X_1$ is a finite closed cover of $X_1 \cup U_2$ in the subspace topology on $X_1\cup U_2$) will be a homotopy $X_1 \cup U_2 \simeq X_1$. Entirely analogously, we get a homotopy $X_2 \cup U_1 \simeq X_2$. Again by the homotopy invariance of singular homology, we get that $H_n(V_1 = X_1 \cup U_2) \cong H_n(X_1)$ and $H_n(V_2 = X_2 \cup U_1) \cong H_n(X_2)$. Therefore we have a one-to one correspondence\footnote{If this term has a hyper-specific category-theoretical meaning, I'm probably not using it correctly. I simply mean that all the homology groups in the first sequence are isomorphic to their corresponding groups in the second sequence.}  between the Mayer-Vietoris sequence of $V_1, V_2, V_0$
+\[
+\ldots \to H_n(V_0) \overset{\phi}{\to} H_n(V_1) \oplus H_n(V_2) \overset{\psi}{\to} H_n(X) \overset{\partial}{\to} H_{n-1}(V_0) \to \ldots
+\]
+and the following sequence
+\[
+\ldots \to H_n(X_0) \overset{\phi'}{\to} H_n(X_1) \oplus H_n(X_2) \overset{\psi'}{\to} H_n(X) \overset{\partial}{\to} H_{n-1}(X_0) \to \ldots
+\]
+where we have replaced all homology groups from the first sequence with their isomorphic counterparts. This second sequence is a Meyer-Vietoris sequence for $X_1, X_2, X_0$, as desired.
+\end{proof}
+
+\end{document}
